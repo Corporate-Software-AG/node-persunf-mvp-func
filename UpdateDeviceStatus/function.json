@@ -1,0 +1,10 @@
+{
+  "bindings": [
+    {
+      "name": "deviceStatus",
+      "type": "activityTrigger",
+      "direction": "in"
+    }
+  ],
+  "scriptFile": "../dist/UpdateDeviceStatus/index.js"
+}

@@ -1,0 +1,10 @@
+{
+  "bindings": [
+    {
+      "name": "deviceId",
+      "type": "activityTrigger",
+      "direction": "in"
+    }
+  ],
+  "scriptFile": "../dist/MonitorPiActivity/index.js"
+}
