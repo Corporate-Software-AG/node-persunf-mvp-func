@@ -7,7 +7,9 @@ const activityFunction: AzureFunction = async function (context: Context): Promi
     let devices = (await registry.list()).responseBody;
     for (let d of devices) {
         let twin = (await registry.getTwin(d.deviceId)).responseBody
-        twins.push({ deviceId: twin.deviceId, mzr: twin.properties.desired.mzr });
+        if (!twin.properties.desired.mzr) twin.properties.desired.mzr = "not set"
+        if (!twin.properties.desired.verificationCode) twin.properties.desired.verificationCode = "not set"
+        twins.push({ deviceId: twin.deviceId, mzr: twin.properties.desired.mzr, verificationCode: twin.properties.desired.verificationCode });
     }
     return twins;
 };

@@ -7,6 +7,7 @@ const orchestrator = df.orchestrator(function* (context) {
     for (let i of devices) {
         let deviceStatus = yield context.df.callActivity("GetPiStatusActivity", i.deviceId);
         deviceStatus.mzr = i.mzr;
+        deviceStatus.verificationCode = i.verificationCode;
         parallelTasks.push(context.df.callActivity("UpdateDeviceStatus", deviceStatus));
     }
 
