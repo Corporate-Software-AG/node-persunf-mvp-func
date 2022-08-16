@@ -1,17 +1,20 @@
-﻿import * as df from "durable-functions"
+import * as df from "durable-functions"
 
 const orchestrator = df.orchestrator(function* (context) {
-
-    let devices: any[] = yield context.df.callActivity("GetDevicesActivity");
-    const outputs = [];
+    let devices: any[] = yield context.df.callActivity("GetDeviceTwinsActivity");
+    const parallelTasks = [];
 
     for (let i of devices) {
-        let deviceStatus = yield context.df.callActivity("MonitorPiActivity", i.deviceId);
-        outputs.push(yield context.df.callActivity("UpdateDeviceStatus", deviceStatus));
+        let deviceStatus = yield context.df.callActivity("GetPiStatusActivity", i.deviceId);
+        deviceStatus.mzr = i.mzr;
+        parallelTasks.push(context.df.callActivity("UpdateDeviceStatus", deviceStatus));
     }
 
-    context.log("Output: ", outputs)
-    return outputs;
+    yield context.df.Task.all(parallelTasks);
+    const sum = parallelTasks.map((i) => i.result);
+
+    context.log("Summary: ", sum);
+    //yield context.df.callActivity("F3", sum);
 });
 
 export default orchestrator;
