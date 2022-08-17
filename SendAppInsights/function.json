@@ -1,0 +1,10 @@
+{
+  "bindings": [
+    {
+      "name": "summary",
+      "type": "activityTrigger",
+      "direction": "in"
+    }
+  ],
+  "scriptFile": "../dist/SendAppInsights/index.js"
+}

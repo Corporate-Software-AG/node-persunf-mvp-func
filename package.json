@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@azure/cosmos": "^3.16.4",
+    "applicationinsights": "^2.3.4",
     "azure-iothub": "^1.15.0",
     "durable-functions": "^2.0.2"
   },

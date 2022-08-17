@@ -13,9 +13,8 @@ const orchestrator = df.orchestrator(function* (context) {
 
     yield context.df.Task.all(parallelTasks);
     const sum = parallelTasks.map((i) => i.result);
-
     context.log("Summary: ", sum);
-    //yield context.df.callActivity("F3", sum);
+    yield context.df.callActivity("SendAppInsights", sum);
 });
 
 export default orchestrator;
