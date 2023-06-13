@@ -3,7 +3,7 @@ import { CosmosClient, PatchOperation } from "@azure/cosmos";
 
 const activityFunction: AzureFunction = async function (context: Context, deviceStatus: any): Promise<any> {
     const client = new CosmosClient(process.env.armasuisse_COSMOSDB);
-    const container = client.database("mvp_persunf").container("pistatus")
+    const container = client.database(process.env.DB_NAME).container("pistatus")
 
     const { resources } = await container.items
         .query({
