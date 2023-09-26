@@ -13,9 +13,9 @@
     {
       "name": "formContentIn",
       "type": "cosmosDB",
-      "connectionStringSetting": "armasuisse_COSMOSDB",
+      "connection": "armasuisse_COSMOSDB",
       "databaseName": "db_epes",
-      "collectionName": "coredata",
+      "containerName": "coredata",
       "direction": "in"
     },
     {
