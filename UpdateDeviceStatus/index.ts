@@ -20,6 +20,7 @@ const activityFunction: AzureFunction = async function (context: Context, device
             { op: 'add', path: '/status', value: deviceStatus.running ? "online" : "offline" },
             { op: 'add', path: '/location', value: deviceStatus.mzr ? deviceStatus.mzr : "not set" },
             { op: 'add', path: '/verificationCode', value: deviceStatus.verificationCode ? deviceStatus.verificationCode : "not set" },
+            { op: 'add', path: '/state', value: deviceStatus.state ? deviceStatus.state : "inactive" },
         ]
         const { resource: updated } = await container.item(deviceStatus.deviceId, deviceStatus.deviceId).patch(operations);
         return { id: updated.id, status: updated.status, location: updated.location, verificationCode: updated.verificationCode };
