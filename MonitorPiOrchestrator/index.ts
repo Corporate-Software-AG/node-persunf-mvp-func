@@ -13,7 +13,7 @@ const orchestrator = df.orchestrator(function* (context) {
         deviceStatus.mzr = i.mzr;
         deviceStatus.verificationCode = i.verificationCode;
         deviceStatus.state = i.state;
-        appInsightsClient.trackEvent({ name: "Monitor Pi Status", properties: { deviceId: deviceStatus.deviceId, status: deviceStatus.running ? "online" : "offline", location: deviceStatus.mzr ? deviceStatus.mzr : "not set", verificationCode: deviceStatus.verificationCode ? deviceStatus.verificationCode : "not set", state: deviceStatus.state ? deviceStatus.state : "inactive" } });
+        appInsightsClient.trackEvent({ name: "Monitor Pi Status", properties: { deviceId: deviceStatus.deviceId, status: deviceStatus.running ? "online" : "offline", location: deviceStatus.mzr ? deviceStatus.mzr : "not set", verificationCode: deviceStatus.verificationCode ? deviceStatus.verificationCode : "not set", state: deviceStatus.state ? deviceStatus.state : "not set" } });
         parallelTasks.push(context.df.callActivity("UpdateDeviceStatus", deviceStatus));
     }
 
