@@ -13,9 +13,9 @@
     {
       "name": "formContentIn",
       "type": "cosmosDB",
-      "connectionStringSetting": "armasuisse_COSMOSDB",
-      "databaseName": "mvp_persunf",
-      "collectionName": "coredata",
+      "connection": "armasuisse_COSMOSDB",
+      "databaseName": "db_epes",
+      "containerName": "coredata",
       "direction": "in"
     },
     {
